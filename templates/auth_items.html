@@ -1,46 +1,132 @@
-{% extends "main.html" %} {% block content %} {% include "header.html" %}
-<div class="row divider green">
-    <div class="col-md-12"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Rob's Sports Supplies</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Rob's Sports Supplies</h1>
+    <p>Sports gear and more</p>
+  </div>
 </div>
-<div class="row banner menu">
-    <div class="col-md-11 col-md-offset-1 padding-none">
-        <h1>{{ category.name }}
-			<figure class="creator">
-				<img src="{{ url_for('static', filename='blank_user.gif') }}">
-				<figcaption>Menu creator's name goes here</figcaption>
-			</figure>
-			</h1>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
     </div>
-</div>
-<div class='flash'>
-    {% with messages = get_flashed_messages() %} {% if messages %}
-    <ul>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+
+        <li> <a href="{{url_for('showCategories')}}">Categories</a></li>
+        <li><a href="{{url_for('showNew')}}">New Items</a></li>
+        <li>
+
+        </li>
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <li>
+
+         {%if 'username' not in session %}
+            <a href="{{url_for('showLogin')}}">Click Here to Login
+            {% else %}
+            <a href="{{url_for('disconnect')}}">Logout
+            {% endif %}
+
+
+            <span class="glyphicon glyphicon-user"></span></a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+  <h3 style="text-align: center; background-color: pink">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
         {% for message in messages %}
-        <li> <strong> {{ message }} </strong> </li>
+              {{ message }}
         {% endfor %}
-    </ul>
-    {% endif %} {% endwith %}
+        {% endif %}
+    {% endwith %}
+</h3>
 </div>
-<div class="row padding-top padding-bottom">
-    <div class="col-md-1"></div>
-    <div class="col-md-11 padding-none">
-        <a href="{{url_for('addItems', category_id = category.id )}}">
-            <button class="btn btn-default" id="new-menu-item">
-                <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>Add Menu Item
+<div class="col-sm-12" style="text-align: center; background-color: grey">
+         <a href="{{url_for('addItems', category_id = category.id )}}">
+            <button class="btn btn-danger" id="new-menu-item">
+               Add Sports Item
             </button>
         </a>
-    </div>
-    <div class="col-md-7"></div>
+
 </div>
+  </div>
+  <div class="row">
 {% if items !=[] %}
-<div class="row">
-    <div class="col-md-6"></div>
-    <div class="col-md-6">
-        <h2>Appetizers</h2> {% for i in items %}
-        <div class="menu-item">
-            <h3>{{i.name}}</h3>
-            <p>{{i.description}}</p>
+  {% for i in items %}
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+         <div class="panel-body"><p>{{i.description}}</p></div>
+        <div class="panel-footer">
+        <h2> {{i.name}} </h2>
+        <p>
           <a href='{{url_for('editItem', category_id = category.id, item_id=i.id ) }}'>Edit</a> |
             <a href='{{url_for('deleteItem', category_id = category.id, item_id=i.id ) }}'>Delete</a>
         </div>
-      {% endfor %} {% endif %} {% endblock %}
+        </p>
+      </div>
+      </div>
+    </div>
+{% endfor %}
+ {% endif %}
+
+  </div>
+</div><br>
+
+
+<footer class="container-fluid text-center">
+  <p>Online Store Copyright</p>
+  <form class="form-inline">Get deals:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+    <button type="button" class="btn btn-danger">Sign Up</button>
+  </form>
+</footer>
+
+</body>
+</html>
