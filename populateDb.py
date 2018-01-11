@@ -26,319 +26,276 @@ session.add(User1)
 session.commit()
 
 # Menu for UrbanBurger
-category1 = Category(user_id=1, name="Urban Burger")
+category1 = Category(user_id=1, name="Soccer")
 
 session.add(category1)
 session.commit()
 
-menuItem2 = SportsItem(user_id=1, name="Veggie Burger", description="Juicy grilled veggie patty with tomato mayo and lettuce", category=category1)
+menuItem2 = SportsItem(user_id=1, name="Soccer Ball", description="A round ball, black and white", category=category1)
 
 session.add(menuItem2)
 session.commit()
 
 
-menuItem1 = SportsItem(user_id=1, name="French Fries", description="with garlic and parmesan", category=category1)
+menuItem1 = SportsItem(user_id=1, name="Goal post", description="kick the ball through these", category=category1)
 
 session.add(menuItem1)
 session.commit()
 
-menuItem2 = SportsItem(user_id=1, name="Chicken Burger", description="Juicy grilled chicken patty with tomato mayo and lettuce", category=category1)
+menuItem2 = SportsItem(user_id=1, name="knee pads", description="Protect your knees", category=category1)
 
 session.add(menuItem2)
 session.commit()
 
-menuItem3 = SportsItem(user_id=1, name="Chocolate Cake", description="fresh baked and served with ice cream", category=category1)
+menuItem3 = SportsItem(user_id=1, name="Minivan", description="Get to soccer safely", category=category1)
 
 session.add(menuItem3)
 session.commit()
 
-menuItem4 = SportsItem(user_id=1, name="Sirloin Burger", description="Made with grade A beef", category=category1)
+menuItem4 = SportsItem(user_id=1, name="Mouth guard", description="Protect your teeth", category=category1)
 
 session.add(menuItem4)
 session.commit()
 
-menuItem5 = SportsItem(user_id=1, name="Root Beer", description="16oz of refreshing goodness", category=category1)
+menuItem5 = SportsItem(user_id=1, name="Beer", description="Make soccer tolerable", category=category1)
 
 session.add(menuItem5)
 session.commit()
 
-menuItem6 = SportsItem(user_id=1, name="Iced Tea", category=category1)
+menuItem6 = SportsItem(user_id=1, name="Iced Tea", description="Through this over soccer kids", category=category1)
 
 session.add(menuItem6)
 session.commit()
 
-menuItem7 = SportsItem(user_id=1, name="Grilled Cheese Sandwich",
-                       description="On texas toast with American Cheese", category=category1)
+menuItem7 = SportsItem(user_id=1, name="Energy Bar",
+                       description="Eat this", category=category1)
 
 session.add(menuItem7)
 session.commit()
 
-menuItem8 = SportsItem(user_id=1, name="Veggie Burger", description="Made with freshest of ingredients and home grown spices", category=category1)
+menuItem8 = SportsItem(user_id=1, name="Grass", description="Play soccer on grass", category=category1)
 
 session.add(menuItem8)
 session.commit()
 
 
 # Menu for Super Stir Fry
-category2 = Category(user_id=1, name="Super Stir Fry")
+category2 = Category(user_id=1, name="Diving")
 
 session.add(category2)
 session.commit()
 
 
-menuItem1 = SportsItem(user_id=1, name="Chicken Stir Fry", description="With your choice of noodles vegetables and sauces", category=category2)
+menuItem1 = SportsItem(user_id=1, name="Regulator", description="Attach to mouth, breath", category=category2)
 
 session.add(menuItem1)
 session.commit()
 
-menuItem2 = SportsItem(user_id=1, name="Peking Duck",
-                       description=" A famous duck dish from Beijing[1] that has been prepared since the imperial era. The meat is prized for its thin, crisp skin, with authentic versions of the dish serving mostly the skin and little meat, sliced in front of the diners by the cook", category=category2)
+menuItem2 = SportsItem(user_id=1, name="Mask",
+                       description="Enables the users to see under water", category=category2)
 
 session.add(menuItem2)
 session.commit()
 
-menuItem3 = SportsItem(user_id=1, name="Spicy Tuna Roll", description="Seared rare ahi, avocado, edamame, cucumber with wasabi soy sauce ", category=category2)
+menuItem3 = SportsItem(user_id=1, name="Snorkel", description="Breathe through this ", category=category2)
 
 session.add(menuItem3)
 session.commit()
 
-menuItem4 = SportsItem(user_id=1, name="Nepali Momo ", description="Steamed dumplings made with vegetables, spices and meat. ", category=category2)
+menuItem4 = SportsItem(user_id=1, name="Fins", description="Swim with these on your feet ", category=category2)
 
 session.add(menuItem4)
 session.commit()
 
-menuItem5 = SportsItem(user_id=1, name="Beef Noodle Soup", description="A Chinese noodle soup made of stewed or red braised beef, beef broth, vegetables and Chinese noodles.", category=category2)
+menuItem5 = SportsItem(user_id=1, name="Tank", description="Put air in it foor breathing.", category=category2)
 
 session.add(menuItem5)
 session.commit()
 
-menuItem6 = SportsItem(user_id=1, name="Ramen", description="a Japanese noodle soup dish. It consists of Chinese-style wheat noodles served in a meat- or (occasionally) fish-based broth, often flavored with soy sauce or miso, and uses toppings such as sliced pork, dried seaweed, kamaboko, and green onions.", category=category2)
+menuItem6 = SportsItem(user_id=1, name="Wetsuit", description="Stay warm under water", category=category2)
 
 session.add(menuItem6)
 session.commit()
 
 
 # Menu for Panda Garden
-category1 = Category(user_id=1, name="Panda Garden")
+category1 = Category(user_id=1, name="Skating")
 
 session.add(category1)
 session.commit()
 
 
-menuItem1 = SportsItem(user_id=1, name="Pho", description="a Vietnamese noodle soup consisting of broth, linguine-shaped rice noodles called banh pho, a few herbs, and meat.", category=category1)
+menuItem1 = SportsItem(user_id=1, name="Converse Sneakers", description="Put on your feet.", category=category1)
 
 session.add(menuItem1)
 session.commit()
 
-menuItem2 = SportsItem(user_id=1, name="Chinese Dumplings", description="a common Chinese dumpling which generally consists of minced meat and finely chopped vegetables wrapped into a piece of dough skin. The skin can be either thin and elastic or thicker.", category=category1)
+menuItem2 = SportsItem(user_id=1, name="Skateboard", description="Skate with this", category=category1)
 
 session.add(menuItem2)
 session.commit()
 
-menuItem3 = SportsItem(user_id=1, name="Gyoza", description="light seasoning of Japanese gyoza with salt and soy sauce, and in a thin gyoza wrapper", category=category1)
+menuItem3 = SportsItem(user_id=1, name="Rollerblades", description="An embarrasing pastime", category=category1)
 
 session.add(menuItem3)
 session.commit()
 
-menuItem4 = SportsItem(user_id=1, name="Stinky Tofu", description="Taiwanese dish, deep fried fermented tofu served with pickled cabbage.", category=category1)
+menuItem4 = SportsItem(user_id=1, name="Hocky Stick", description="Hit people with this", category=category1)
 
 session.add(menuItem4)
 session.commit()
 
-menuItem2 = SportsItem(user_id=1, name="Veggie Burger", description="Juicy grilled veggie patty with tomato mayo and lettuce", category=category1)
+menuItem2 = SportsItem(user_id=1, name="Wheels", description="Replace your wheels", category=category1)
 
 session.add(menuItem2)
 session.commit()
 
 
 # Menu for Thyme for that
-category1 = Category(user_id=1, name="Thyme for That Vegetarian Cuisine ")
+category1 = Category(user_id=1, name="Waterskiing")
 
 session.add(category1)
 session.commit()
 
 
-menuItem1 = SportsItem(user_id=1, name="Tres Leches Cake", description="Rich, luscious sponge cake soaked in sweet milk and topped with vanilla bean whipped cream and strawberries.", category=category1)
+menuItem1 = SportsItem(user_id=1, name="Boat", description="Some to tow you with", category=category1)
 
 session.add(menuItem1)
 session.commit()
 
-menuItem2 = SportsItem(user_id=1, name="Mushroom risotto", description="Portabello mushrooms in a creamy risotto", category=category1)
+menuItem2 = SportsItem(user_id=1, name="Skis", description="Put on feet", category=category1)
 
 session.add(menuItem2)
 session.commit()
 
-menuItem3 = SportsItem(user_id=1, name="Honey Boba Shaved Snow",
-                       description="Milk snow layered with honey boba, jasmine tea jelly, grass jelly, caramel, cream, and freshly made mochi", category=category1)
+menuItem3 = SportsItem(user_id=1, name="Bathers",
+                       description="Not able to wear jeans", category=category1)
 
 session.add(menuItem3)
 session.commit()
 
-menuItem4 = SportsItem(user_id=1, name="Cauliflower Manchurian", description="Golden fried cauliflower florets in a midly spiced soya,garlic sauce cooked with fresh cilantro, celery, chilies,ginger & green onions", category=category1)
+menuItem4 = SportsItem(user_id=1, name="Helmet", description="Put on head", category=category1)
 
 session.add(menuItem4)
 session.commit()
 
-menuItem5 = SportsItem(user_id=1, name="Aloo Gobi Burrito", description="Vegan goodness. Burrito filled with rice, garbanzo beans, curry sauce, potatoes (aloo), fried cauliflower (gobi) and chutney. Nom Nom", category=category1)
+menuItem5 = SportsItem(user_id=1, name="Rope", description="Get dragged behind a boat", category=category1)
 
 session.add(menuItem5)
 session.commit()
 
-menuItem2 = SportsItem(user_id=1, name="Veggie Burger", description="Juicy grilled veggie patty with tomato mayo and lettuce", category=category1)
+menuItem2 = SportsItem(user_id=1, name="Water", description="Required for water skiing", category=category1)
 
 session.add(menuItem2)
 session.commit()
 
 
 # Menu for Tony's Bistro
-category1 = Category(user_id=1, name="Tony\'s Bistro ")
+category1 = Category(user_id=1, name="Frisbee ")
 
 session.add(category1)
 session.commit()
 
 
-menuItem1 = SportsItem(user_id=1, name="Shellfish Tower", description="Lobster, shrimp, sea snails, crawfish, stacked into a delicious tower", category=category1)
+menuItem1 = SportsItem(user_id=1, name="Frisbee", description="Throw this", category=category1)
 
 session.add(menuItem1)
 session.commit()
 
-menuItem2 = SportsItem(user_id=1, name="Chicken and Rice", description="Chicken... and rice", category=category1)
+menuItem2 = SportsItem(user_id=1, name="Knitted beanie", description="Frisbee haute couture", category=category1)
 
 session.add(menuItem2)
 session.commit()
 
-menuItem3 = SportsItem(user_id=1, name="Mom's Spaghetti", description="Spaghetti with some incredible tomato sauce made by mom", category=category1)
+menuItem3 = SportsItem(user_id=1, name="Dark glasses", description="Hide those bloodshot eyes", category=category1)
 
 session.add(menuItem3)
-session.commit()
-
-menuItem4 = SportsItem(user_id=1, name="Choc Full O\' Mint (Smitten\'s Fresh Mint Chip ice cream)",
-                       description="Milk, cream, salt, ..., Liquid nitrogen magic", category=category1)
-
-session.add(menuItem4)
-session.commit()
-
-menuItem5 = SportsItem(user_id=1, name="Tonkatsu Ramen", description="Noodles in a delicious pork-based broth with a soft-boiled egg", category=category1)
-
-session.add(menuItem5)
 session.commit()
 
 
 # Menu for Andala's
-category1 = Category(user_id=1, name="Andala\'s")
+category1 = Category(user_id=1, name="Basketball")
 
 session.add(category1)
 session.commit()
 
 
-menuItem1 = SportsItem(user_id=1, name="Lamb Curry", description="Slow cook that thang in a pool of tomatoes, onions and alllll those tasty Indian spices. Mmmm.", category=category1)
+menuItem1 = SportsItem(user_id=1, name="Ball", description="Throw and bounce the ball", category=category1)
 
 session.add(menuItem1)
 session.commit()
 
-menuItem2 = SportsItem(user_id=1, name="Chicken Marsala", description="Chicken cooked in Marsala wine sauce with mushrooms", category=category1)
+menuItem2 = SportsItem(user_id=1, name="Hoop", description="Throw ball through hoop", category=category1)
 
 session.add(menuItem2)
 session.commit()
 
-menuItem3 = SportsItem(user_id=1, name="Potstickers", description="Delicious chicken and veggies encapsulated in fried dough.", category=category1)
+menuItem3 = SportsItem(user_id=1, name="Shoes", description="Put on feet.", category=category1)
 
 session.add(menuItem3)
 session.commit()
 
-menuItem4 = SportsItem(user_id=1, name="Nigiri Sampler", description="Maguro, Sake, Hamachi, Unagi, Uni, TORO!", category=category1)
+menuItem4 = SportsItem(user_id=1, name="Referee", description="This person tells you what to do", category=category1)
 
 session.add(menuItem4)
 session.commit()
 
-menuItem2 = SportsItem(user_id=1, name="Veggie Burger", description="Juicy grilled veggie patty with tomato mayo and lettuce", category=category1)
+menuItem2 = SportsItem(user_id=1, name="Siren", description="Listen and-or ring the bell", category=category1)
 
 session.add(menuItem2)
 session.commit()
 
 
 # Menu for Auntie Ann's
-category1 = Category(user_id=1, name="Auntie Ann\'s Diner' ")
+category1 = Category(user_id=1, name="Rock climbing")
 
 session.add(category1)
 session.commit()
 
-menuItem9 = SportsItem(user_id=1, name="Chicken Fried Steak",
-                       description="Fresh battered sirloin steak fried and smothered with cream gravy", category=category1)
+menuItem9 = SportsItem(user_id=1, name="Rocks",
+                       description="Climb on these", category=category1)
 
 session.add(menuItem9)
 session.commit()
 
 
-menuItem1 = SportsItem(user_id=1, name="Boysenberry Sorbet", description="An unsettlingly huge amount of ripe berries turned into frozen (and seedless) awesomeness", category=category1)
+menuItem1 = SportsItem(user_id=1, name="Cliff", description="Climb up this", category=category1)
 
 session.add(menuItem1)
 session.commit()
 
-menuItem2 = SportsItem(user_id=1, name="Broiled salmon", description="Salmon fillet marinated with fresh herbs and broiled hot & fast", category=category1)
+menuItem2 = SportsItem(user_id=1, name="Roap", description="Attach this to an anchor point", category=category1)
 
 session.add(menuItem2)
-session.commit()
-
-menuItem3 = SportsItem(user_id=1, name="Morels on toast (seasonal)",
-                       description="Wild morel mushrooms fried in butter, served on herbed toast slices", category=category1)
-
-session.add(menuItem3)
-session.commit()
-
-menuItem4 = SportsItem(user_id=1, name="Tandoori Chicken", description="Chicken marinated in yoghurt and seasoned with a spicy mix(chilli, tamarind among others) and slow cooked in a cylindrical clay or metal oven which gets its heat from burning charcoal.", category=category1)
-
-session.add(menuItem4)
-session.commit()
-
-menuItem2 = SportsItem(user_id=1, name="Veggie Burger", description="Juicy grilled veggie patty with tomato mayo and lettuce", category=category1)
-
-session.add(menuItem2)
-session.commit()
-
-menuItem10 = SportsItem(user_id=1, name="Spinach Ice Cream", description="vanilla ice cream made with organic spinach leaves", category=category1)
-
-session.add(menuItem10)
 session.commit()
 
 
 # Menu for Cocina Y Amor
-category1 = Category(user_id=1, name="Cocina Y Amor ")
+category1 = Category(user_id=1, name="Bug collecting")
 
 session.add(category1)
 session.commit()
 
 
-menuItem1 = SportsItem(user_id=1, name="Super Burrito Al Pastor",
-                       description="Marinated Pork, Rice, Beans, Avocado, Cilantro, Salsa, Tortilla", category=category1)
+menuItem1 = SportsItem(user_id=1, name="Trap",
+                       description="Trap a bug", category=category1)
 
 session.add(menuItem1)
 session.commit()
 
-menuItem2 = SportsItem(user_id=1, name="Cachapa", description="Golden brown, corn-based Venezuelan pancake; usually stuffed with queso telita or queso de mano, and possibly lechon. ", category=category1)
+menuItem2 = SportsItem(user_id=1, name="Pins", description="Pin them to a board, best pins here", category=category1)
 
 session.add(menuItem2)
 session.commit()
 
 
-category1 = Category(user_id=1, name="State Bird Provisions")
-session.add(category1)
-session.commit()
+menuItem3 = SportsItem(user_id=1, name="Boots", description="Dont get bitten by snakes by wearing these boots", category=category1)
 
-menuItem1 = SportsItem(user_id=1, name="Chantrelle Toast", description="Crispy Toast with Sesame Seeds slathered with buttery chantrelle mushrooms", category=category1)
-
-session.add(menuItem1)
+session.add(menuItem3)
 session.commit
 
-menuItem1 = SportsItem(user_id=1, name="Guanciale Chawanmushi",
-                       description="Japanese egg custard served hot with spicey Italian Pork Jowl (guanciale)", category=category1)
+menuItem4 = SportsItem(user_id=1, name="Net",
+                       description="Needed to catch flying bugs", category=category1)
 
-session.add(menuItem1)
-session.commit()
-
-
-menuItem1 = SportsItem(user_id=1, name="Lemon Curd Ice Cream Sandwich",
-                       description="Lemon Curd Ice Cream Sandwich on a chocolate macaron with cardamom meringue and cashews", category=category1)
-
-session.add(menuItem1)
+session.add(menuItem4)
 session.commit()

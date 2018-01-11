@@ -213,6 +213,8 @@ def showItems(category_id):
     else:
         return render_template("auth_items.html", items=items, category=category, creator=creator)
 
+# show recent items added
+
 
 @app.route('/categories/recentItems/')
 def showNew():
@@ -242,8 +244,8 @@ def addItems(category_id):
     else:
         return render_template('newItem.html', category_id=category_id)
 
-        # Create sports items
 
+# Create sports categories
 
 @app.route('/categories/new/', methods=['GET', 'POST'])
 def addCategory():
@@ -259,6 +261,8 @@ def addCategory():
         return redirect(url_for('showCategories'))
     else:
         return render_template('newCategory.html')
+
+# Edit items
 
 
 @app.route('/categories/<int:category_id>/items/<int:item_id>/edit', methods=['GET', 'POST'])
@@ -327,8 +331,34 @@ def disconnect():
         flash("You were not logged in")
         return redirect(url_for('showCategories'))
 
+# JSON APIs
+
+# get all items from category
+
+
+@app.route('/api/categories/<int:category_id>/items/JSON')
+def sportsItemJSON(category_id):
+    items = session.query(SportsItem).filter_by(category_id=category_id).all()
+    return jsonify(SportsItem=[i.serialize for i in items])
+
+# get s single item from category
+
+
+@app.route('/api/categories/<int:category_id>/items/<int:item_id>/JSON')
+def allItemsJSON(category_id, item_id):
+    item = session.query(SportsItem).filter_by(id=item_id).one()
+    return jsonify(SportsItem=item.serialize)
+
+# get all categories
+
+
+@app.route('/api/categories/JSON')
+def categoriesJSON():
+    categories = session.query(Category).all()
+    return jsonify(categories=[c.serialize for c in categories])
+
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
     app.debug = True
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=8000)
