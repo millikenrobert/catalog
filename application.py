@@ -11,6 +11,7 @@ from oauth2client.client import FlowExchangeError
 import httplib2
 import json
 from flask import make_response
+from string import lower
 import requests
 
 # Launch app
@@ -213,14 +214,10 @@ def showItems(category_id):
         return render_template("auth_items.html", items=items, category=category, creator=creator)
 
 
-@app.route('/categories/new/')
+@app.route('/categories/recentItems/')
 def showNew():
     items = session.query(SportsItem).order_by(desc(SportsItem.id))
-
-    if 'username' not in login_session or creator.id != login_session['user_id']:
-        return render_template('public_items.html', items=items, category=category, creator=creator)
-    else:
-        return render_template("auth_items.html", items=items, category=category, creator=creator)
+    return render_template('recentItems.html', items=items)
 
 
 # Create sports items
