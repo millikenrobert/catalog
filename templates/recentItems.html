@@ -60,7 +60,7 @@
       <ul class="nav navbar-nav navbar-right">
 
         <li>
-
+          <!-- Check User name -->
          {%if 'username' not in session %}
             <a href="{{url_for('showLogin')}}">Click Here to Login
             {% else %}
@@ -91,7 +91,6 @@
   <div class="row">
 
   {% for item in items %}
-        <a href = "{{url_for('showItems', category_id = item.id)}}">
             <div class="row">
                 <div class="col-md-1"></div>
                     <div class="col-md-10 restaurant-list">
@@ -99,7 +98,7 @@
                     </div>
                 <div class="col-md-1"></div>
             </div>
-        </a>
+
     {% endfor %}
 
   </div>
