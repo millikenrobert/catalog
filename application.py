@@ -180,7 +180,8 @@ def gdisconnect():
         response.headers['Content-Type'] = 'application/json'
         return response
     else:
-        response = make_response(json.dumps('Failed to revoke token for given user.', 400))
+        response = make_response(json.dumps(
+            'Failed to revoke token for given user.', 400))
         response.headers['Content-Type'] = 'application/json'
         return response
 
@@ -234,7 +235,8 @@ def addItems(category_id):
         return "<script>function myFunction() {alert('Not authorised to add Sports Item to this category');}</script><body onload='myFunction()'>"
 
     if request.method == 'POST':
-        newItem = SportsItem(name=request.form['name'], description=request.form['description'], category=category, user_id=category.user_id)
+        newItem = SportsItem(name=request.form['name'], description=request.form[
+                             'description'], category=category, user_id=category.user_id)
         session.add(newItem)
         session.commit()
         flash('New %s Item Successfully Created' % (newItem.name))
