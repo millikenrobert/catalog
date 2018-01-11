@@ -213,6 +213,16 @@ def showItems(category_id):
         return render_template("auth_items.html", items=items, category=category, creator=creator)
 
 
+@app.route('/categories/new/')
+def showNew():
+    items = session.query(SportsItem).order_by(desc(SportsItem.id))
+
+    if 'username' not in login_session or creator.id != login_session['user_id']:
+        return render_template('public_items.html', items=items, category=category, creator=creator)
+    else:
+        return render_template("auth_items.html", items=items, category=category, creator=creator)
+
+
 # Create sports items
 @app.route('/categories/<int:category_id>/items/new/', methods=['GET', 'POST'])
 def addItems(category_id):
