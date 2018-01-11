@@ -1,6 +1,6 @@
 # Import libraries
 from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
-from sqlalchemy import create_engine, asc
+from sqlalchemy import create_engine, asc, desc
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, SportsItem, User
 from flask import session as login_session
@@ -190,6 +190,9 @@ def gdisconnect():
 def showCategories():
     categories = session.query(Category).order_by(asc(Category.name))
 
+    for c in categories:
+        print("ID: %s Name: %s" % (c.id, c.name))
+
     if 'username' not in login_session:
         return render_template('public_categories.html', categories=categories)
     else:
@@ -221,14 +224,34 @@ def addItems(category_id):
     if login_session['user_id'] != category.user_id:
         return "<script>function myFunction() {alert('Not authorised to add Sports Item to this category');}</script><body onload='myFunction()'>"
 
-        if request.method == 'POST':
-            newItem = SportsItem(name=request.form['name'], description=request.form['description'], category=request.form['category'], category_id=category_id, user_id=category.user_id)
-            session.add(newItem)
-            session.commit()
-            flash('New %s Item Successfully Created' % (newItem.name))
-            return redirect(url_for('showItems', category_id=category_id))
+    if request.method == 'POST':
+        newItem = SportsItem(name=request.form['name'], description=request.form['description'], category=category, user_id=category.user_id)
+        session.add(newItem)
+        session.commit()
+        flash('New %s Item Successfully Created' % (newItem.name))
+        print("sdfsd")
+        return redirect(url_for('showItems', category_id=category_id))
+
     else:
         return render_template('newItem.html', category_id=category_id)
+
+        # Create sports items
+
+
+@app.route('/categories/new/', methods=['GET', 'POST'])
+def addCategory():
+    if 'username' not in login_session:
+        return redirect('/login')
+
+    if request.method == 'POST':
+        newCategory = Category(
+            name=request.form['name'], user_id=login_session['user_id'])
+        session.add(newCategory)
+        flash('New Category %s Created' % newCategory.name)
+        session.commit()
+        return redirect(url_for('showCategories'))
+    else:
+        return render_template('newCategory.html')
 
 
 @app.route('/categories/<int:category_id>/items/<int:item_id>/edit', methods=['GET', 'POST'])
@@ -247,8 +270,7 @@ def editItem(category_id, item_id):
             editedItem.name = request.form['name']
         if request.form['description']:
             editedItem.description = request.form['description']
-        if request.form['category']:
-            editedItem.category = request.form['category']
+
         session.add(editedItem)
         session.commit()
         flash('Item Edited')
