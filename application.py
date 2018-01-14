@@ -1,5 +1,6 @@
 # Import libraries
-from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
+from flask import Flask, render_template, request, redirect, jsonify, \
+    url_for, flash
 from sqlalchemy import create_engine, asc, desc
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, SportsItem, User
@@ -93,7 +94,8 @@ def gconnect():
     stored_access_token = login_session.get('access_token')
     stored_gplus_id = login_session.get('gplus_id')
     if stored_access_token is not None and gplus_id == stored_gplus_id:
-        response = make_response(json.dumps('Current user is already connected.'),
+        response = make_response(json.dumps('Current user is already \
+            connected.'),
                                  200)
         response.headers['Content-Type'] = 'application/json'
         return response
@@ -127,7 +129,8 @@ def gconnect():
     output += '!</h1>'
     output += '<img src="'
     output += login_session['picture']
-    output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
+    output += ' " style = "width: 300px; height: 300px;border-radius: \
+    150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
     flash("you are now logged in as %s" % login_session['username'])
     print "done!"
     return output
@@ -172,11 +175,13 @@ def gdisconnect():
             json.dumps('Current user not connected.'), 401)
         response.headers['Content-Type'] = 'application/json'
         return response
-    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % access_token
+    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % \
+        access_token
     h = httplib2.Http()
     result = h.request(url, 'GET')[0]
     if result['status'] == '200':
-        response = make_response(json.dumps('Successfully disconnected.'), 200)
+        response = make_response(json.dumps('Successfully disconnected.'),
+                                 200)
         response.headers['Content-Type'] = 'application/json'
         return response
     else:
@@ -196,9 +201,11 @@ def showCategories():
         print("ID: %s Name: %s" % (c.id, c.name))
 
     if 'username' not in login_session:
-        return render_template('public_categories.html', categories=categories)
+        return render_template('public_categories.html',
+                               categories=categories)
     else:
-        return render_template('auth_categories.html', categories=categories)
+        return render_template('auth_categories.html',
+                               categories=categories)
 
 # Show the sports items
 
@@ -209,10 +216,13 @@ def showItems(category_id):
     category = session.query(Category).filter_by(id=category_id).one()
     creator = getUserInfo(category.user_id)
     items = session.query(SportsItem).filter_by(category_id=category_id).all()
-    if 'username' not in login_session or creator.id != login_session['user_id']:
-        return render_template('public_items.html', items=items, category=category, creator=creator)
+    if 'username' not in login_session or creator.id != \
+            login_session['user_id']:
+        return render_template('public_items.html', items=items,
+                               category=category, creator=creator)
     else:
-        return render_template("auth_items.html", items=items, category=category, creator=creator)
+        return render_template("auth_items.html", items=items,
+                               category=category, creator=creator)
 
 # show recent items added
 
@@ -224,7 +234,8 @@ def showNew():
 
 
 # Create sports items
-@app.route('/categories/<int:category_id>/items/new/', methods=['GET', 'POST'])
+@app.route('/categories/<int:category_id>/items/new/', methods=['GET',
+                                                                'POST'])
 def addItems(category_id):
     if 'username' not in login_session:
         return redirect('/login')
@@ -232,11 +243,14 @@ def addItems(category_id):
     category = session.query(Category).filter_by(id=category_id).one()
 
     if login_session['user_id'] != category.user_id:
-        return "<script>function myFunction() {alert('Not authorised to add Sports Item to this category');}</script><body onload='myFunction()'>"
+        return "<script>function myFunction() {alert('Not authorised to add \
+        Sports Item to this category');}</script><body onload='myFunction()'>"
 
     if request.method == 'POST':
-        newItem = SportsItem(name=request.form['name'], description=request.form[
-                             'description'], category=category, user_id=category.user_id)
+        newItem = SportsItem(name=request.form['name'],
+                             description=request.form[
+                             'description'], category=category,
+                             user_id=category.user_id)
         session.add(newItem)
         session.commit()
         flash('New %s Item Successfully Created' % (newItem.name))
@@ -267,7 +281,8 @@ def addCategory():
 # Edit items
 
 
-@app.route('/categories/<int:category_id>/items/<int:item_id>/edit', methods=['GET', 'POST'])
+@app.route('/categories/<int:category_id>/items/<int:item_id>/edit',
+           methods=['GET', 'POST'])
 def editItem(category_id, item_id):
     if 'username' not in login_session:
         return redirect('/login')
@@ -276,7 +291,8 @@ def editItem(category_id, item_id):
     category = session.query(Category).filter_by(id=category_id).one()
 
     if login_session['user_id'] != category.user_id:
-        return "<script>function myFunction() {alert('Not authorised to edit this Sports Item');}</script><body onload='myFunction()'>"
+        return "<script>function myFunction() {alert('Not authorised to \
+        edit this Sports Item');}</script><body onload='myFunction()'>"
 
     if request.method == 'POST':
         if request.form['name']:
@@ -289,11 +305,13 @@ def editItem(category_id, item_id):
         flash('Item Edited')
         return redirect(url_for('showItems', category_id=category_id))
     else:
-        return render_template('editItem.html', category_id=category_id, item_id=item_id, item=editedItem)
+        return render_template('editItem.html', category_id=category_id,
+                               item_id=item_id, item=editedItem)
 
 
 # Delete a item
-@app.route('/categories/<int:category_id>/items/<int:item_id>/delete', methods=['GET', 'POST'])
+@app.route('/categories/<int:category_id>/items/<int:item_id>/delete',
+           methods=['GET', 'POST'])
 def deleteItem(category_id, item_id):
     if 'username' not in login_session:
         return redirect('/login')
@@ -302,7 +320,8 @@ def deleteItem(category_id, item_id):
     category = session.query(Category).filter_by(id=category_id).one()
 
     if login_session['user_id'] != category.user_id:
-        return "<script>function myFunction() {alert('Not authorised to delete this Sports Item');}</script><body onload='myFunction()'>"
+        return "<script>function myFunction() {alert('Not authorised to \
+        delete this Sports Item');}</script><body onload='myFunction()'>"
 
     if request.method == 'POST':
         session.delete(deleteItem)
